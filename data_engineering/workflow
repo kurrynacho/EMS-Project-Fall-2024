@@ -1,0 +1,21 @@
+workdir="/Users/jonathanmiller/Documents/GitHub/erdosEMS"
+outdir=$workdir/data/SAS/SAS.db/SAS\ ${year}.db
+mkdir outdir
+Download SAS_${year}.sas7bdat zip file
+move it to $workdir/data/SAS/SAS ${year}
+unzip it
+move it to outdir
+remove zip file
+run sas_to_sqlite.py
+check "tables" :
+	sqlite outdir/pub_pcrevents.db 
+	.tables
+	should yield pub_pcrevents.db
+remove unzipped directory
+otherwise correct tablee:
+	run alter_dbtables.py
+perform the join and output to pub_data_${year}.csv
+	autosqueryv11.10
+check the join
+if check, remove .db file.
+

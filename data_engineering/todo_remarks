@@ -1,0 +1,24 @@
+Dear Jessica, Karina, Darius:
+
+
+Thanks to all for your hard work. I won't engage in mea culpas, but mea culpa.
+
+JM's to do's; some may not be done by Monday and obviously there will be no time to process remediated data.
+1. Jessica alerted us to counties absent from some datasets, in particularly her list of ~30 counties that she submitted to us recently.
+	a. One reason may be that my dropbox ran out of space, and my output files were stuck in an intermediate stage of upload; that is fixed now.
+	b. Another reason may be that there will be more counties tabulated in 2023 than 2018.
+	c. Counties may have been merged or dropped since 2018.
+	d. I owe you a systematic summarization and tabulation of (a-c).
+2. Darius recently alerted us to missing dates. I can think of several potential reasons for missing dates:
+	a. The date is referred to by a PcrKey, but there were one or more null values in the linked files or their entries.
+		+ solution may be to impute.
+	b. The date is missing from the source file for no systematic reason (missing by chance);
+		+ here the solution may again be to impute.
+	c. Maybe most concerning:
+		(i) the density of entries for some tims/date interval is low and absent dates are expected.
+			+ in this case, nothing wrong with the data, and it should be possible to use the data directly, e.g. "0" for all categories for that date.
+		(ii) dates have been merged for technical reasons.
+			+ solution may be to randomly split the data for the merged dates;
+	
+Even if the problems have not been solved by Tuesday, at least we can provide a "to-do" list.
+

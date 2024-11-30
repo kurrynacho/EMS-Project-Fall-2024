@@ -1,0 +1,56 @@
+#!/bin/bash
+#USCensusDivision CountyID Urbanicity
+#0              b'Pacific'    EE9PF   b'Urban'
+# 2023:		Masked_DestinationCountyID
+# Other years:	Masked_DestinationCounty
+
+
+# List of years to iterate through
+#years=("2018" "2019" "2020" "2021" "2022")  # Add as many years as you need
+years=("2019" "2021" "2022")  # Add as many years as you need
+years=("2019" "2021" "2022")  # Add as many years as you need
+years=("2018")
+
+pathdir="/Users/jonathanmiller/Documents/GitHub/erdosEMS"
+#ls -l $pathdir
+
+# Loop over each year and run the SQLite commands
+for year in "${years[@]}"; do
+
+  echo $year
+  # Define the paths with the current year (e.g., update paths if needed for the year)
+  destination_db="${pathdir}/data/Destinations.db/destination_County_d_${year}.db"
+  echo $destination_db
+  pub_pcrevents_db="${pathdir}/data/SAS/SAS.db/SAS ${year}.db/pub_pcrevents.db"
+  echo $pub_pcrevents_db
+  echo `ls "$pub_pcrevents_db"`
+
+  # Run the SQLite commands for the current year
+  sqlite3 <<EOF
+.open "${destination_db}"
+.output pcrkeys_${year}.csv
+# WHERE Masked_DestinationCounty in ('EE9PF', 'NTVRU', '8MKQ8', 'KNJYA', 'ERY72', 'REUPY', 'CL0W8', 'JG2AT', '7AA9Y', 'ZFOUL', 'PAHPY', '9K2F1', 'S673R', 'HKHZQ', '19UZK', 'FRK94', '7ZDLG', 'UPAPQ', 'PNP7M', '7WC4T', 'B2C2S', 'MXY0O', 'CMPA8', 'LGYAG', 'HYAKR', '0FJ5O');
+#For 2023 only:
+#Masked_DestinationCountyID
+ SELECT PcrKey, Masked_DestinationCounty FROM destination_county as DC
+ WHERE Masked_DestinationCounty in ('EE9PF','NTVRU','1R9GL','R7GCP','FIHD3','X2SA5','EE9PF','AA0L8','T5KTW','2C2SN','7TMYU','OUDTG','FIHD3','AEMKW','K0WLB','NTVRU','X2SA5','NTVRU','EE9PF','FIHD3','N2JNB','8MKQ8','KNJYA','XWSDM','Q5JYQ','7TCMM','O8WQ9','XWSDM','HJIDT','H51JT','XODLX','LT3NY','XWSDM','L75MC','T5KTW','IMZ47','XWSDM','EA24G','XLTAN','97AHR','KNJYA','H51JT','ERY72','REUPY','13AZH','O0GCT','E9Z96','13AZH','ZO2BO','PFR55','YQOMU','KQX2V','PFR55','REUPY','ERUK8','PFR55','JYEM2','ERUK8','KQX2V','OOBPF','KOL5J','O6AN5','49RHT','CL0W8','JG2AT','DMSUI','YPTPW','W4JHI','AEVXZ','9UEU7','I4QN9','N2I2O','Z491D','JG2AT','SCLU6','INUM7','D39B2','SZ8B3','HJUZQ','0JTMM','Z240H','675YQ','N2I2O','X8ZMP','7AA9Y','ZFOUL','IEKN6','VCSNE','7AA9Y','G2UCV','TFZM8','PIZJP','7AA9Y','X8235','HOJV2','GRICQ','X8235','X19W2','NMALX','D6KG2','IEKN6','DMHWY','SPYDV','XYK7E','FIQU6','PAHPY','9K2F1','JC5W4','MBD7W','1JIHX','GVPF3','YFIOA','4E9TW','H9T5F','B1DEM','Z11XL','4E9TW','TGMJ5','HBHXT','HBHXT','I05BX','LG96F','MBD7W','Z2DD2','TGMJ5','9EOKX','S673R','HKHZQ','R24GR','HKHZQ','N8E95','DQ7K2','HKHZQ','5J52I','YZ8NF','N8E95','ATTKF','2GVE0','5J52I','S673R','VVHJ1','HKHZQ','N8E95','5FAQE','XG5YX','K7HA0','D2C44','19UZK','FRK94','PGKFN','AMX7K','AMX7K','XTSGF','2AYMP','AMX7K','WZ7H1','PTBZU','R12TV','HB5C9','OLN99','HKHZQ','37VB9','3EYYP','PGKFN','PGKFN','LDG2G','PTBZU','U39UC','7ZDLG','UPAPQ','W667D','OPFWC','8A05X','TNXEF','WS52E','OK5SQ','NRLEW','TNXEF','P8H50','CWLEO','E32VL','OK5SQ','7EW50','PNP7M','DY45G','1Q8D9','43UWW','VP8HK','CCOF4','PNP7M','7WC4T','47DVU','IXS16','47DVU','Z3HXC','JCH29','RD4ZA','1HBLB','J114A','XMJW7','7D1ZW','PHX9P','M44FV','E73LT','7W3J1','ZA838','6RDOW','1KD5Y','LAU7I','Z3HXC','B2C2S','MXY0O','R0NYE','16BFD','PN49M','JQKW3','QE4F7','9ERGC','4FYC1','AJFIQ','JF1T1','CPN7I','ZEP7L','JF1T1','16BFD','BEI74','QE4F7','R0NYE','JF1T1','ETFD1','R904T','CMPA8','C7RVR','V1C62','CDH93','P2HH6','LNWV8','LFI9M','LNWV8','LNWV8','6AVB1','CMPA8','V1C62','TYUQZ','JF1T1','LNWV8','HWZXV','P94EV','AJFIQ','9AKAQ','P2HH6','8A5F9','LGYAG','HYAKR','FDIZ6','ABTZL','HYAKR','VWCR8','S3H7O','DWI7Q','ST3CQ','FDIZ6','S3H7O','7JNXR','HLW3R','9U1V0','S3H7O','I2LTH','BMI0S','I2QAK','TF602','FDIZ6','ABTZL','0FJ5O','52VJW','EB1T6','6BV06','FRWSF','EB1T6','JQEZ7','WAFOV','OA7OF','KQBLH','0J6B5','XDFW3','LGYAG','LGYAG','OMBAO','CO993','HU60D','XB2YV','Q52OT','W6S0F','90BZA','N8582','H4GAB','VKASM','L9VZ5','B7PUJ','XL6GI','OFAO0','B7PUJ','TQUMC','WMAZD','UNLU1','XL6GI','PWICL','OH7RN','JJ18D','XL6GI','N8582','UNLU1','V8MST','GIE31','B7PUJ','7XNL5','DM95V','FUCLQ','CN7VX','L9VZ5','AFMBJ','N8582','JPHGU','DM95V','RSUW1','DY4J1','1JX8B','2FXEZ','FUCLQ','HYF1X','5WMUU','XB3GM','47GYE','JPHGU','TNA6M','B1X17','2HNB1','EKHPD','EF8Z9','U2WOF','29PUA','HIJWL','385IP','NNN3M','W397G','JU6MA','LEBLT','EKHPD','JU6MA','LEBLT','WURXW','LEBLT','GBD01','385IP','LEBLT','GNPAP','LEBLT','Q2KB3','OT1E0','GN7PR','3FZSQ','Q2KB3','3FZSQ','GXJ6B','Q2KB3','GF95B','IKPNQ','4M6L6','GN7PR','FLE45','F3ZLS','ZVAVZ','GXJ6B','HIJWL','ZJY3P','3FZSQ','Q2KB3','OT1E0');
+
+.output stdout
+.open "${pub_pcrevents_db}"
+CREATE TABLE IF NOT EXISTS temp_pcrkeys (PcrKey INTEGER, Masked_DestinationCounty TEXT);
+.mode csv
+.separator |
+.import pcrkeys_${year}.csv temp_pcrkeys
+SELECT * FROM temp_pcrkeys LIMIT 10;
+
+.output pub_data_counties_${year}_batch2.csv
+SELECT
+pub.PcrKey, Masked_DestinationCounty, pub.eTimes_03, pub.eDispatch_01
+FROM pub_pcrevents as pub
+JOIN temp_pcrkeys ON pub.PcrKey = temp_pcrkeys.PcrKey
+ORDER BY Masked_DestinationCounty;
+.output stdout
+DROP TABLE temp_pcrkeys;
+EOF
+
+done
