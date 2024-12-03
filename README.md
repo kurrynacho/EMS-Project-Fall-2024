@@ -74,11 +74,11 @@ This module contains Python scripts to process large SAS datasets efficiently. T
 #### Features
 
 1. **SAS to Parquet Conversion (`sas_to_parquet`)**:
-   - Reads large SAS files in chunks and converts them to Parquet files for efficient storage and processing.
+   - Reads large SAS files in chunks and converts them to Parquet files for efficient storage and processing (essential for dataset of this size).
    - Creates a designated folder to store Parquet files if it doesn't already exist.
 
 2. **Parquet File Loading (`parquet_to_df`)**:
-   - Combines Parquet files into a Dask DataFrame for scalable data analysis.
+   - Combines Parquet files from a folder into a single Dask DataFrame.
 
 3. **Filtered DataFrame Creation (`filtered_df`)**:
    - Returns a filtered DataFrame with only the specified columns.
@@ -100,7 +100,7 @@ This module contains Python scripts to process large SAS datasets efficiently. T
 ---
 
 ### **`preprocessing.py`**
-This module provides a comprehensive toolkit for processing and analyzing time series data. The methods include cleaning, scaling, transforming, and extracting trends from time series data, with support for both **Pandas** and **Dask** DataFrames.
+This module provides a comprehensive toolkit for processing and analyzing the time series data. The methods include cleaning, scaling, transforming, and extracting trends from time series data, with support for both **Pandas** and **Dask** DataFrames.
 
 #### Features
 
@@ -140,7 +140,103 @@ This module provides a comprehensive toolkit for processing and analyzing time s
     - Calculates a smoothed trend for the time series using a rolling mean with a specified window size.
 
 ###forecasting.py
+
+This module provides advanced forecasting techniques for the time series data. 
+
+#### Key Function: The `ttsplit_predictions` function performs the following:
+1. **Train-Test-Split**:
+   - Splits the data into train-test pairs, can set _f_ as the number of testing folds and _s_ as the length of each forecast.  
+
+2. **Models**:
+   - Can specify models to test: ARIMA, auto_arima, prophet, prophet with lockdown dates, exponential smoothing. 
+   - Can test models which combine prophet/prophet with lockdown dates/exponential smoothing to model the trend with Arima to model the remainder.
+   - Can set ARIMA to do hyperparameter tuning just once at the beginning of train test split or once for every fold.
+   - Always computes the naive and constant forecasts for the sake of comparison. 
+
+3. **Parameter Tuning**:
+   - Performs grid search on hyperparameters for combining a state-space model and arima with user-specified set of hyperparamters. 
+   - 
+Can accomodate weekly or monthly data by setting weekly=True or monthly=True. 
+
+
+#### Forecasting Models
+1. **Prophet Predictions**:
+   - **Daily Prophet** (`prophet_predict`): Forecasts future counts using Prophet on a monthly scale.
+
+   - **Monthly Prophet** (`monthly_prophet_predict`): Forecasts future counts using Prophet on a monthly scale.
+   - **Weekly Prophet** (`weekly_prophet_predict`): Forecasts future counts using Prophet on a weekly scale.
+   - **Prophet with Lockdowns**:
+     - **Daily** (`prophet_predict_withlockdown`)
+     - **Monthly** (`monthly_prophet_predict_withlockdown`)
+     - **Weekly** (`weekly_prophet_predict_withlockdown`)
+
+3. **ARIMA-Based Models**:
+   - **Auto ARIMA** (`autoarima_predict`): Automatically selects the best ARIMA model using the BIC criterion.
+   - **Exponential Smoothing + ARIMA** (`smoothing_arima`)
+   - **Prophet + ARIMA**:
+     - Standard (`prophet_arima`)
+     - With Lockdowns (`prophet_arima_withlockdown`)
+
+5. **Naive and Constant Models**:
+   - **Naive Predict** (`naive_predict`): Repeats the last observed value.
+   - **Constant Predict** (`constant_predict`): Uses the average of all observed values.
+
+
+### Evaluation and Model Validation
+1. **Holdout Values** (`holdout_values`):
+   - Retrieves actual values for evaluation from the holdout set.
+
+2. **Model Evaluation** (`evaluate_predictions`):
+   - Computes metrics for each model and returns as a dataframe:
+     - Mean Squared Error (MSE)
+     - Mean Absolute Error (MAE)
+     - Normalized MSE (NMSE)
+
+
 ###plotting.py
+1. **Plot Data (`plot_data`)**:
+   - **Description**: Plots the 'count' column over time using the 'date' column from the dataset.
+   - **Purpose**: Provides a basic visualization of the time series data to observe overall trends and patterns.
+
+2. **Plot Predictions (`plot_predictions`)**:
+   - **Description**: Plots the actual data alongside model predictions over a specified length of time.
+   - **Purpose**: Helps visualize and compare the performance of different forecasting models against the actual data.
+   - **Parameters**:
+     - `data`: The original dataset containing 'date' and 'count'.
+     - `predictions_dict`: A dictionary where keys are model names and values are prediction arrays.
+     - `length`: The number of data points to plot from the end of the dataset.
+
+3. **Plot Smoothed Data (`plot_smoothed_data`)**:
+   - **Description**: Plots the original data along with its moving average trend using a specified window size.
+   - **Purpose**: Visualizes the underlying trend in the data by smoothing out short-term fluctuations.
+   - **Parameters**:
+     - `data`: The dataset containing 'date' and 'count'.
+     - `window_size`: The size of the moving window for calculating the trend (default is 180).
+
+4. **Plot Trend and Detrended Data (`plot_trend_residue`)**:
+   - **Description**: Plots the trend and the detrended data (residuals) using either multiplicative or additive methods.
+   - **Purpose**: Helps in analyzing how the data deviates from the trend component.
+   - **Parameters**:
+     - `data`: The dataset containing 'date' and 'count'.
+     - `window_size`: The size of the moving window for calculating the trend (default is 180).
+     - `type`: Specifies the detrending method; 'mult' for multiplicative or 'add' for additive.
+
+5. **FFT Plot (`fftplot`)**:
+   - **Description**: Performs Fast Fourier Transform (FFT) on the data and plots the frequency spectrum.
+   - **Purpose**: Identifies dominant frequencies in the time series, which can indicate periodic patterns.
+   - **Parameters**:
+     - `data`: The dataset containing 'count'.
+     - `frequency_scaler`: A factor to adjust the range of frequencies displayed (default is 2).
+
+6. **Periodogram Plot (`pgram_plot`)**:
+   - **Description**: Computes the periodogram of the data, plots the power spectrum, finds peaks, and prints dominant frequencies and periods.
+   - **Purpose**: Provides a detailed spectral analysis to detect and quantify periodicities in the data.
+   - **Parameters**:
+     - `data`: The dataset containing 'count`.
+   - **Output**:
+     - A plot of the periodogram.
+     - Printed list of dominant frequencies, their corresponding periods, and power levels.
+
 
 ## Conclusion
 
