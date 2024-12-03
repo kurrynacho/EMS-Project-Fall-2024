@@ -106,6 +106,10 @@ In particular, Prophet takes into account yearly and monthly seasonality in addi
 That being said, the best performing model at the state level was SARIMA. This may be due to the fact that the state datasets are much more stationary. The counties are much more sensitive to the data-reporting habits of individual EMS agencies, leading to more dramatic trends in the data. 
 
 #### County-Size vs NMSE:
+Here we plot the normalized mean squared error against the size of the dataset (logarithmic scale).  
+![]() <img src="images/modelcomparison.png" width=95%>
+The forecasting models we implemented provided an actionable advantage over the baseline models starting at a dataset size of around 200,000 calls. By actionable advantage, we mean a MAE improvement of >10. 10 is a typical call volume for a single ambulance in a single 12 hour shift. 
+
 #### Future TODO's
 - Implement algorithmic hyperparameter tuning for the Prophet models.  (as in https://medium.com/@sandha.iitr/tuning-parameters-of-prophet-for-forecasting-an-easy-approach-in-python-8c9a6f9be4e8)
 - Add Fourier terms of time series as exogenous regressor to the ARIMA model.  (as in https://www.kaggle.com/code/kailex/arima-with-fourier-terms)
@@ -115,7 +119,6 @@ That being said, the best performing model at the state level was SARIMA. This m
 ### Neural Network
 
 
-## Conclusion and Recommendations 
 
 
 ----------------------------------------------------------------------------------------------------------------
