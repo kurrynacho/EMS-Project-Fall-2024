@@ -22,12 +22,10 @@ The NEMSIS data standard is currently on version 3, which encompasses the years 
 
 ## Exploratory Data Analysis
 
-(Summarize interesting EDA)
+![]() <img src="images/DayOfWeekViolin.png" width=95%>
+In the above graph, we have violin plots for several different counties where the x-axis is days of the week starting with Sunday and the y-axis indicates the range in call volumes occuring on that day. From this, we see that different counties have different types of patterns in their call volumes, which informs our decision to create separate models for different counties.
 
-## Data Engineering and Preprocessing
-
-(Summarize work done on data engineering in SQL)
-
+## Preprocessing
 
 ![]() <img src="images/call_volumes0JTMM.png" width=95%>
 
@@ -127,9 +125,6 @@ The forecasting models we implemented provided an actionable advantage over the 
 - For each specific dataset, input the periods of time where there are clear anomalies in data reporting as holidays for the Prophet models.
 - Python modules would benefit from a more OOP structure.
 - Add compatiblity with earlier versions of the NEMSIS data standard so more years of data can be incorporated. 
-### Neural Network
-
-
 
 
 ----------------------------------------------------------------------------------------------------------------
