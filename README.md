@@ -75,6 +75,10 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
    
 #### Combining State Space Models with ARIMA
 - **Extracting the Trend**
+    - Use moving average. Moving average window size chosen after train-test-split comparisons.
+    - Two ways to decompose time series:
+        1. Additive Decomposition: Series=Trend+Remainder
+        2. Multiplicative Decomposition: Series=Trend*Remainder
 - **Steps for Modeling**
     1. Decompose the time series into a trend and a remainder
     3. Apply a state space model to predict the trend
@@ -84,6 +88,7 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 #### Results for counties:
 **Testing on some counties: 10 fold Train-Test split with 14 day forecasts**  
 (Averaged from the results in the _Final Results_ section of the _Testing_on_county_datasets_ Jupyter Notebook)
+(smoothing_arima_mult_120 means exponential smoothing prediction on trend and arima prediction on the remainder, using a multiplicative decomposition of the time series with a window size of 120 days for the trend extraction). 
 | Model                                | Average_MSE   | Average_MAE   | Average_NMSE |
 |--------------------------------------|---------------|---------------|--------------|
 | smoothing_arima_mult_120             | 38908.484814  | 154.045702    | 0.396261     |
