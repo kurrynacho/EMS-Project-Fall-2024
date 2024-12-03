@@ -58,12 +58,13 @@ Here are the mean squared errors for these four models:
 | SARIMA(0,1,2)(2,0,1)[7]    | 0.03240    |
 
 The naive model had the largest MSE, and all three selected SARIMA models cut the error by over a third. The SARIMA(1,2,2)(2,0,1)[7] performed the best.
-### State Space Models
-
 ### Combining State Space and SARIMA Models
+
 ### Neural Network
 
-## Python Modules
+## Future Steps
+
+## Conclusion
 # Documentation
 
 ## Modules
@@ -233,7 +234,5 @@ Can accomodate weekly or monthly data by setting weekly=True or monthly=True.
      - A plot of the periodogram.
      - Printed list of dominant frequencies, their corresponding periods, and power levels.
 
-
-## Conclusion
 
 
