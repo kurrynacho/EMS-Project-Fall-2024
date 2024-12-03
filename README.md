@@ -77,94 +77,20 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 #### Results
 #### Results for counties:
 **Testing on some counties: 10 fold Train-Test split with 14 day forecasts**  
-**Dataset Size:** 4,614,204  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| prophet_predict_withlockdown | 70,227.38     | 199.94      | 0.1832  |
-| arima                        | 124,313.78    | 246.13      | 0.3243  |
-| constant_predict             | 164,891.20    | 369.62      | 0.4301  |
-| naive_predict                | 383,336.83    | 530.07      | 1.0000  |
-
-**Dataset Size:** 3,324,626  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| arima                        | 473,555.52    | 363.00      | 0.9510  |
-| constant_predict             | 281,395.96    | 415.90      | 0.5651  |
-| prophet_predict_withlockdown | 439,850.00    | 464.46      | 0.8833  |
-| naive_predict                | 497,981.24    | 488.71      | 1.0000  |
-
-**Dataset Size:** 3,132,673  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| arima                        | 78,391.64     | 152.42      | 1.0120  |
-| naive_predict                | 77,461.80     | 178.90      | 1.0000  |
-| prophet_predict_withlockdown | 578,567.80    | 700.41      | 7.4691  |
-| constant_predict             | 670,241.91    | 772.42      | 8.6525  |
-
-**Dataset Size:** 3,104,283  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| prophet_predict_withlockdown | 19,020.82     | 111.03      | 0.1663  |
-| arima                        | 20,878.47     | 112.99      | 0.1825  |
-| constant_predict             | 39,297.88     | 166.37      | 0.3435  |
-| naive_predict                | 114,408.34    | 286.34      | 1.0000  |
-
-**Dataset Size:** 2,232,254  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| arima                        | 16,280.18     | 99.72       | 0.5762  |
-| prophet_predict_withlockdown | 26,424.56     | 118.26      | 0.9352  |
-| constant_predict             | 24,254.55     | 123.17      | 0.8584  |
-| naive_predict                | 28,256.08     | 134.11      | 1.0000  |
-
-**Dataset Size:** 2,215,539  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| arima                        | 14,869.87     | 85.61       | 0.0782  |
-| prophet_predict_withlockdown | 21,089.88     | 112.89      | 0.1109  |
-| constant_predict             | 52,931.25     | 175.47      | 0.2784  |
-| naive_predict                | 190,139.14    | 383.14      | 1.0000  |
-
-**Dataset Size:** 2,030,960  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| prophet_predict_withlockdown | 7,996.82      | 63.61       | 0.1278  |
-| arima                        | 7,740.49      | 66.25       | 0.1237  |
-| constant_predict             | 15,208.00     | 97.97       | 0.2430  |
-| naive_predict                | 62,591.27     | 213.15      | 1.0000  |
-
-**Dataset Size:** 1,877,742  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| prophet_predict_withlockdown | 89,623.09     | 257.50      | 0.3827  |
-| arima                        | 96,193.15     | 266.12      | 0.4108  |
-| constant_predict             | 106,887.34    | 282.83      | 0.4565  |
-| naive_predict                | 234,160.31    | 405.79      | 1.0000  |
-
-**Dataset Size:** 1,844,904  
-| Model                        | MSE           | MAE         | NMSE    |
-|------------------------------|---------------|-------------|---------|
-| arima                        | 7,699.62      | 71.24       | 0.5049  |
-| naive_predict                | 15,249.86     | 103.87      | 1.0000  |
-| prophet_predict_withlockdown | 344,034.64    | 536.17      | 22.5599 |
-| constant_predict             | 370,721.94    | 601.90      | 24.3099 |
-
-**Average performance for the above counties:**
-
-| Model                                  | Score    |
-|----------------------------------------|----------|
-| **smoothing_arima_mult_120**           | 0.3963   |
-| **arima**                              | 0.4626   |
-| **expsmoothing_predict**               | 0.7058   |
-| **naive_predict**                      | 1.0000   |
-| **prophet_arima_mult_120**             | 2.2015   |
-| **prophet_arima_withlockdown_mult_120**| 2.3669   |
-| **prophet_predict_withlockdown**       | 3.6465   |
-| **constant_predict**                   | 4.0153   |
+(Averaged from the results in the _Final Results_ section of the _Testing_on_county_datasets_ Jupyter Notebook)
+| Model                                | Average_MSE   | Average_MAE   | Average_NMSE |
+|--------------------------------------|---------------|---------------|--------------|
+| smoothing_arima_mult_120             | 38908.484814  | 154.045702    | 0.396261     |
+| arima                                | 46662.602601  | 162.608514    | 0.462608     |
+| prophet_arima_mult_120               | 58257.706375  | 215.562716    | 2.201474     |
+| prophet_arima_withlockdown_mult_120  | 59923.872544  | 219.099574    | 2.366923     |
+| expsmoothing_predict                 | 87890.790622  | 235.652851    | 0.705751     |
 
 #### Results for States
+**Testing on some states: 10 fold Train-Test split with 14 day forecasts**  
+(Averaged from the results in the _Testing_on_state_datasets_ Jupyter Notebook)
 
-
+Average results for each model: 
 | **Model**                            | **MSE**      | **MAE**  | **NMSE**  |
 |--------------------------------------|--------------|----------|-----------|
 | **arima**                            | 181,594.24   | 276.454  | 0.19558   |
@@ -174,15 +100,10 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 | **naive_predict**                    | 1,414,727.88 | 963.218  | 1.00000   |
 
 
-
-
-
-
-
-
-
-
 #### States vs Counties
+Prophet performed much better at the state level than at the county level. The complexity of the Prophet model likely leads to better performance when there's more data, while making it prone to overfitting when there is less data. \\
+In particular, Prophet takes into account yearly and monthly seasonality in addition to weekly seasonality. Examining the spectrum of the states reveals much more significant yearly and monthly seasonal effects compared to that of the counties, which may explain Prophet's advantage over exponential smoothing at the State level. \\
+That being said, the best performing model at the state level was SARIMA. This may be due to the fact that the state datasets are much more stationary. The counties are much more sensitive to the data-reporting habits of individual EMS agencies, leading to more dramatic trends in the data. 
 
 #### County-Size vs NMSE:
 #### Future TODO's
