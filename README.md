@@ -75,7 +75,7 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
     4. Apply SARIMA to predict the remainder
     5. Recombine predictions
 #### Results
-### Dataset Results
+#### Results for counties:
 **Testing on some counties: 10 fold Train-Test split with 14 day forecasts**  
 **Dataset Size:** 4,614,204  
 | Model                        | MSE           | MAE         | NMSE    |
@@ -161,6 +161,20 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 | **prophet_arima_withlockdown_mult_120**| 2.3669   |
 | **prophet_predict_withlockdown**       | 3.6465   |
 | **constant_predict**                   | 4.0153   |
+
+#### Results for States
+
+
+| **Model**                            | **MSE**      | **MAE**  | **NMSE**  |
+|--------------------------------------|--------------|----------|-----------|
+| **arima**                            | 181,594.24   | 276.454  | 0.19558   |
+| **prophet_arima_mult_120**           | 189,029.44   | 285.854  | 0.20714   |
+| **prophet_arima_withlockdown_mult_120** | 187,229.04   | 284.592  | 0.20744   |
+| **constant_predict**                 | 491,238.68   | 568.074  | 0.46728   |
+| **naive_predict**                    | 1,414,727.88 | 963.218  | 1.00000   |
+
+
+
 
 
 
