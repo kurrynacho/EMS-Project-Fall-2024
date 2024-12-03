@@ -58,8 +58,89 @@ Here are the mean squared errors for these four models:
 | SARIMA(0,1,2)(2,0,1)[7]    | 0.03240    |
 
 The naive model had the largest MSE, and all three selected SARIMA models cut the error by over a third. The SARIMA(1,2,2)(2,0,1)[7] performed the best.
+### State Space Models
 
+### Combining State Space and SARIMA Models
 ### Neural Network
+
+## Python Modules
+# Documentation
+
+## Modules
+
+### **`loading_data.py`**
+This module contains Python scripts to process large SAS datasets efficiently. The pipeline includes reading SAS files, converting them to Parquet format, filtering and merging datasets, and organizing data by state. The implementation uses **Pandas** for smaller tasks and **Dask** for distributed processing of large datasets.
+
+#### Features
+
+1. **SAS to Parquet Conversion (`sas_to_parquet`)**:
+   - Reads large SAS files in chunks and converts them to Parquet files for efficient storage and processing.
+   - Creates a designated folder to store Parquet files if it doesn't already exist.
+
+2. **Parquet File Loading (`parquet_to_df`)**:
+   - Combines Parquet files into a Dask DataFrame for scalable data analysis.
+
+3. **Filtered DataFrame Creation (`filtered_df`)**:
+   - Returns a filtered DataFrame with only the specified columns.
+
+4. **State ID Addition (`add_state_id`)**:
+   - Adds masked state identifiers by merging with a CSV mapping file.
+   - Saves the combined dataset to Parquet format.
+
+5. **State-Based File Separation (`separate_to_states`)**:
+   - Separates the dataset into individual files based on unique state identifiers.
+   - Saves each state's data as a separate Parquet file.
+
+6. **Unique State Extraction (`unique_states`)**:
+   - Extracts unique state identifiers from a CSV file for downstream tasks.
+
+7. **State-Based Data Loading (`load_states`)**:
+   - Dynamically loads data for specified states into a dictionary for easy access.
+
+---
+
+### **`preprocessing.py`**
+This module provides a comprehensive toolkit for processing and analyzing time series data. The methods include cleaning, scaling, transforming, and extracting trends from time series data, with support for both **Pandas** and **Dask** DataFrames.
+
+#### Features
+
+1. **Subset Data (`subset_data`)**:
+   - Extracts a subset of the dataset based on a specific column value.
+
+2. **Time Series Extraction (`get_time_series`)**:
+   - Converts a dataset into a time series by parsing and normalizing date and time information.
+
+3. **Outlier Removal (`remove_outliers`)**:
+   - Detects and removes outliers in a specified column using the Interquartile Range (IQR) method.
+   - Replaces outliers with the column's mean.
+
+4. **Data Scaling (`scale_data`)**:
+   - Scales data in a specified column to the range [0, 1] using Min-Max scaling.
+
+5. **Remove Zero Values (`drop_zeros`)**:
+   - Removes rows where the specified column has a value of zero.
+
+6. **Processed Time Series Creation (`get_processed_series`)**:
+   - Combines multiple processing steps:
+     - Extracts a time series.
+     - Removes outliers.
+     - Scales the data.
+     - Drops rows with zero values.
+
+7. **Train-Test Split (`time_series_split`)**:
+   - Splits the time series into training and testing datasets, preserving temporal order.
+
+8. **Weekly Data Conversion (`convert_to_weekly`)**:
+   - Aggregates the time series data into weekly intervals.
+
+9. **Monthly Data Conversion (`convert_to_monthly`)**:
+   - Aggregates the time series data into monthly intervals.
+
+10. **Trend Extraction (`get_trend`)**:
+    - Calculates a smoothed trend for the time series using a rolling mean with a specified window size.
+
+###forecasting.py
+###plotting.py
 
 ## Conclusion
 
