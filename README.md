@@ -76,7 +76,7 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
     5. Recombine predictions
 #### Results
 ### Dataset Results
-**Testing on some counties: 10 fold Train-Test split with 14 day forecasts**
+**Testing on some counties: 10 fold Train-Test split with 14 day forecasts**  
 **Dataset Size:** 4,614,204  
 | Model                        | MSE           | MAE         | NMSE    |
 |------------------------------|---------------|-------------|---------|
