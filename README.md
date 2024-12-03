@@ -59,12 +59,21 @@ Here are the mean squared errors for these four models:
 
 The naive model had the largest MSE, and all three selected SARIMA models cut the error by over a third. The SARIMA(1,2,2)(2,0,1)[7] performed the best.
 ### Combining State Space and SARIMA Models
-
+#### State Space Models
+#### Combining State Space Models
+#### Results
+#### States vs Counties
+#### Future Steps
+-Implement algorithmic hyperparameter tuning for the Prophet models. 
+-Add Fourier terms of time series as 
 ### Neural Network
 
-## Future Steps
 
-## Conclusion
+## Conclusion and Recommendations 
+
+
+----------------------------------------------------------------------------------------------------------------
+
 # Documentation
 
 ## Modules
@@ -220,14 +229,14 @@ Can accomodate weekly or monthly data by setting weekly=True or monthly=True.
 
 5. **FFT Plot (`fftplot`)**:
    - **Description**: Performs Fast Fourier Transform (FFT) on the data and plots the frequency spectrum.
-   - **Purpose**: Identifies dominant frequencies in the time series, which can indicate periodic patterns.
+   - **Purpose**: Identifies dominant frequencies in the time series to identify periodic patterns.
    - **Parameters**:
      - `data`: The dataset containing 'count'.
      - `frequency_scaler`: A factor to adjust the range of frequencies displayed (default is 2).
 
 6. **Periodogram Plot (`pgram_plot`)**:
-   - **Description**: Computes the periodogram of the data, plots the power spectrum, finds peaks, and prints dominant frequencies and periods.
-   - **Purpose**: Provides a detailed spectral analysis to detect and quantify periodicities in the data.
+   - **Description**: Plots the periodogram, finds peaks of the spectrum, and prints dominant frequencies/periods.
+   - **Purpose**: Provides detailed information about the spectrum to detect and quantify periodicities in the data.
    - **Parameters**:
      - `data`: The dataset containing 'count`.
    - **Output**:
