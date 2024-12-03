@@ -18,7 +18,7 @@ We work with a data set provided by the National Emergency Medical Services Info
 
 The dataset is anonymized and does not contain any location data more granular than Census Division. We obtained additional permission to receive files which identified the county and state of each PcrKey by a five digit code. This allowed us to consolidate the data by county and state. Since we are not able to know which real life county or state corresponds to the five digit code, we are not able to use specific features of a county or state in our analysis. That being said, an stakeholder who has access to that information would likely benefit from adding location dependent exogenous regressors such as temperature into the ARIMA models. 
 
-The NEMSIS data standard is currently on version 3, which encompasses the years 2018-2023. We chose to limit our analysis to these years both for the convenience of preprocessing as well as hard drive space limitations (each year has over 100GB of data). 
+The NEMSIS data standard is currently on version 3, which encompasses the years 2018-2023. We chose to limit our analysis to these years both for the convenience of preprocessing as well as hard drive space limitations (each year has around 150GB of data). 
 
 ## Exploratory Data Analysis
 
