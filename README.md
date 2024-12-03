@@ -1,4 +1,4 @@
-# Predicting Call Volumes for the Emergency Medical Services (EMS)
+# Predicting Call Volumes for Emergency Medical Services (EMS)
 ### Erdos Institute data science project, Fall 2024
 
 ## Authors
