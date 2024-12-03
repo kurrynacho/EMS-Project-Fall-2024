@@ -9,13 +9,14 @@
 
 ## Summary
 
-Our broad goal is to predict the volume of different types of Emergency Medical Service (EMS) calls within a certain time interval with time series methods and to identify features that correlate with the volume of EMS calls. 
+Our broad goal is to predict the volume of different types of Emergency Medical Service (EMS) calls within a certain time interval with time series methods
 
 
 ## Dataset
 
-We work with a public data set provided by the National Emergency Medical Services Information System (NEMSIS), a product of the National Highway Safety Administration's EMS Office that sets the standard for EMS agencies to collect and report data. It consolidates EMS data from 54 participating states and territories into a national database. We have obtained public datasets from 2018 through 2023 that are purged of identifying information to comply with privacy law. A single EMS event is represented by (possibly multiple) EMS activations when multiple units respond to the scene.
+We work with a data set provided by the National Emergency Medical Services Information System (NEMSIS), a product of the National Highway Safety Administration's EMS Office that sets the standard for EMS agencies to collect and report data. In order to obtain the data, we applied for and received approval directly from NEMSIS. NEMSIS consolidates EMS data from 54 participating states and territories into a national database. We have obtained public datasets from 2018 through 2023 that are purged of identifying information to comply with privacy law. A single EMS event is represented by (possibly multiple) EMS activations when multiple units respond to the scene. Each EMS activation is tagged by a unique identifier labeled PcrKey. 
 
+The dataset is anonymized and does not contain any location data more granular than Census Division. We obtained permission to receive files which identified the county and state of each PcrKey by a five digit code. This allowed us to consolidate the data by county and state. Since we are not able to know which real life county or state corresponds to the five digit code, we are not able to use specific features of a county or state in our analysis. That being said, an stakeholder who has access to that information would likely benefit from adding location dependent exogenous regressors such as temperature into the ARIMA models. 
 
 ## Exploratory Data Analysis
 
@@ -68,15 +69,15 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 - **Steps for Modeling**
     1. Decompose the time series into a trend and a remainder
     3. Apply a state space model to predict the trend
-    4. Apply ARIMA to predict the remainder
+    4. Apply SARIMA to predict the remainder
     5. Recombine predictions
 #### Results
 #### States vs Counties
 
 #### Future Steps
--Implement algorithmic hyperparameter tuning for the Prophet models.  
--Add Fourier terms of time series as exogenous regressor to the ARIMA model.  
--For a specific county, input the periods of time where the counties have anomalies in data reporting as exogenous regressors.   
+- Implement algorithmic hyperparameter tuning for the Prophet models.  
+- Add Fourier terms of time series as exogenous regressor to the ARIMA model.  
+- For a specific county, input the periods of time where the counties have anomalies in data reporting as exogenous regressors.   
 ### Neural Network
 
 
