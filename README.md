@@ -77,7 +77,7 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 #### Results
 #### States vs Counties
 
-#### Future TODO
+#### Future TODO's
 - Implement algorithmic hyperparameter tuning for the Prophet models.  (as in https://medium.com/@sandha.iitr/tuning-parameters-of-prophet-for-forecasting-an-easy-approach-in-python-8c9a6f9be4e8)
 - Add Fourier terms of time series as exogenous regressor to the ARIMA model.  (as in https://www.kaggle.com/code/kailex/arima-with-fourier-terms)
 - For each specific dataset, input the periods of time where there are clear anomalies in data reporting as holidays for the Prophet models.
