@@ -64,9 +64,15 @@ Here are the mean squared errors for these four models:
 The naive model had the largest MSE, and all three selected SARIMA models cut the error by over a third. The SARIMA(1,2,2)(2,0,1)[7] performed the best.
 ### Combining State Space and SARIMA Models
 #### State Space Models
-1. **Exponential Smoothing**
-2. **Prophet**
+1. **Holt Exponential Smoothing**
+     - gives exponentially decreasing weights to older observations.
+     - effective for datasets with trends and seasonality
+     - simple and computationally efficient.
 
+2. **Prophet**
+    - open-source forecasting model designed by Facebook to handle time series data with strong seasonal effects, holidays, and trends
+    - computationally heavy
+   
 #### Combining State Space Models with ARIMA
 - **Extracting the Trend**
 - **Steps for Modeling**
