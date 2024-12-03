@@ -9,14 +9,16 @@
 
 ## Summary
 
-Our broad goal is to predict the volume of different types of Emergency Medical Service (EMS) calls within a certain time interval with time series methods
+Our broad goal is to predict the volume of different types of Emergency Medical Service (EMS) calls within a certain time interval with time series methods. 
 
 
-## Dataset
+## Data
 
 We work with a data set provided by the National Emergency Medical Services Information System (NEMSIS), a product of the National Highway Safety Administration's EMS Office that sets the standard for EMS agencies to collect and report data. In order to obtain the data, we applied for and received approval directly from NEMSIS. NEMSIS consolidates EMS data from 54 participating states and territories into a national database. We have obtained public datasets from 2018 through 2023 that are purged of identifying information to comply with privacy law. A single EMS event is represented by (possibly multiple) EMS activations when multiple units respond to the scene. Each EMS activation is tagged by a unique identifier labeled PcrKey. 
 
-The dataset is anonymized and does not contain any location data more granular than Census Division. We obtained permission to receive files which identified the county and state of each PcrKey by a five digit code. This allowed us to consolidate the data by county and state. Since we are not able to know which real life county or state corresponds to the five digit code, we are not able to use specific features of a county or state in our analysis. That being said, an stakeholder who has access to that information would likely benefit from adding location dependent exogenous regressors such as temperature into the ARIMA models. 
+The dataset is anonymized and does not contain any location data more granular than Census Division. We obtained additional permission to receive files which identified the county and state of each PcrKey by a five digit code. This allowed us to consolidate the data by county and state. Since we are not able to know which real life county or state corresponds to the five digit code, we are not able to use specific features of a county or state in our analysis. That being said, an stakeholder who has access to that information would likely benefit from adding location dependent exogenous regressors such as temperature into the ARIMA models. 
+
+The NEMSIS data standard is currently on version 3, which encompasses the years 2018-2023. We chose to limit our analysis to these years both for the convenience of preprocessing as well as hard drive space limitations (each year has over 100GB of data). 
 
 ## Exploratory Data Analysis
 
@@ -25,6 +27,7 @@ The dataset is anonymized and does not contain any location data more granular t
 ## Data Engineering and Preprocessing
 
 (Summarize work done on data engineering in SQL)
+
 
 ![]() <img src="images/call_volumes0JTMM.png" width=95%>
 
@@ -74,10 +77,12 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 #### Results
 #### States vs Counties
 
-#### Future Steps
-- Implement algorithmic hyperparameter tuning for the Prophet models.  
-- Add Fourier terms of time series as exogenous regressor to the ARIMA model.  
-- For a specific county, input the periods of time where the counties have anomalies in data reporting as exogenous regressors.   
+#### Future TODO
+- Implement algorithmic hyperparameter tuning for the Prophet models.  (as in https://medium.com/@sandha.iitr/tuning-parameters-of-prophet-for-forecasting-an-easy-approach-in-python-8c9a6f9be4e8)
+- Add Fourier terms of time series as exogenous regressor to the ARIMA model.  (as in https://www.kaggle.com/code/kailex/arima-with-fourier-terms)
+- For each specific dataset, input the periods of time where there are clear anomalies in data reporting as holidays for the Prophet models.
+- Python modules would benefit from a more OOP structure.
+- Add compatiblity with earlier versions of the NEMSIS data standard so more years of data can be incorporated. 
 ### Neural Network
 
 
