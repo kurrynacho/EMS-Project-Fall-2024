@@ -60,12 +60,23 @@ Here are the mean squared errors for these four models:
 The naive model had the largest MSE, and all three selected SARIMA models cut the error by over a third. The SARIMA(1,2,2)(2,0,1)[7] performed the best.
 ### Combining State Space and SARIMA Models
 #### State Space Models
-#### Combining State Space Models
+1. **Exponential Smoothing**
+2. **Prophet**
+
+#### Combining State Space Models with ARIMA
+- **Extracting the Trend**
+- **Steps for Modeling**
+    1. Decompose the time series into a trend and a remainder
+    3. Apply a state space model to predict the trend
+    4. Apply ARIMA to predict the remainder
+    5. Recombine predictions
 #### Results
 #### States vs Counties
+
 #### Future Steps
 -Implement algorithmic hyperparameter tuning for the Prophet models. 
--Add Fourier terms of time series as 
+-Add Fourier terms of time series as exogenous regressor to the ARIMA model.
+-For a specific county, input the periods of time where the counties have anomalies in data reporting as exogenous regressors. 
 ### Neural Network
 
 
