@@ -112,13 +112,13 @@ Average results for each model:
 
 
 #### States vs Counties
-Prophet performed much better at the state level than at the county level. The complexity of the Prophet model likely leads to better performance when there's more data, while making it prone to overfitting when there is less data. \\
-In particular, Prophet takes into account yearly and monthly seasonality in addition to weekly seasonality. Examining the spectrum of the states reveals much more significant yearly and monthly seasonal effects compared to that of the counties, which may explain Prophet's advantage over exponential smoothing at the State level. \\
+Prophet performed much better at the state level than at the county level. The complexity of the Prophet model likely leads to better performance when there's more data, while making it prone to overfitting when there is less data.    
+In particular, Prophet takes into account yearly and monthly seasonality in addition to weekly seasonality. Examining the spectrum of the states reveals much more significant yearly and monthly seasonal effects compared to that of the counties, which may explain Prophet's advantage over exponential smoothing at the State level.    
 That being said, the best performing model at the state level was SARIMA. This may be due to the fact that the state datasets are much more stationary. The counties are much more sensitive to the data-reporting habits of individual EMS agencies, leading to more dramatic trends in the data. 
 
 #### County-Size vs NMSE:
 Here we plot the normalized mean squared error against the size of the dataset (logarithmic scale).  
-![]() <img src="images/modelcomparison.png" width=95%>
+![]() <img src="images/modelcomparison.png" width=95%>  
 The forecasting models we implemented provided an actionable advantage over the baseline models starting at a dataset size of around 200,000 calls. By actionable advantage, we mean a MAE improvement of >10. 10 is a typical call volume for a single ambulance in a single 12 hour shift. 
 
 #### Future TODO's
