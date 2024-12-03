@@ -71,8 +71,6 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 ### **`loading_data.py`**
 This module contains Python scripts to process large SAS datasets efficiently. The pipeline includes reading SAS files, converting them to Parquet format, filtering and merging datasets, and organizing data by state. The implementation uses **Pandas** for smaller tasks and **Dask** for distributed processing of large datasets.
 
-#### Features
-
 1. **SAS to Parquet Conversion (`sas_to_parquet`)**:
    - Reads large SAS files in chunks and converts them to Parquet files for efficient storage and processing (essential for dataset of this size).
    - Creates a designated folder to store Parquet files if it doesn't already exist.
@@ -101,8 +99,6 @@ This module contains Python scripts to process large SAS datasets efficiently. T
 
 ### **`preprocessing.py`**
 This module provides a comprehensive toolkit for processing and analyzing the time series data. The methods include cleaning, scaling, transforming, and extracting trends from time series data, with support for both **Pandas** and **Dask** DataFrames.
-
-#### Features
 
 1. **Subset Data (`subset_data`)**:
    - Extracts a subset of the dataset based on a specific column value.
@@ -139,7 +135,7 @@ This module provides a comprehensive toolkit for processing and analyzing the ti
 10. **Trend Extraction (`get_trend`)**:
     - Calculates a smoothed trend for the time series using a rolling mean with a specified window size.
 
-###forecasting.py
+### forecasting.py
 
 This module provides advanced forecasting techniques for the time series data. 
 
@@ -182,7 +178,7 @@ Can accomodate weekly or monthly data by setting weekly=True or monthly=True.
    - **Constant Predict** (`constant_predict`): Uses the average of all observed values.
 
 
-### Evaluation and Model Validation
+#### Evaluation and Model Validation
 1. **Holdout Values** (`holdout_values`):
    - Retrieves actual values for evaluation from the holdout set.
 
