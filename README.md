@@ -74,9 +74,9 @@ The naive model had the largest MSE, and all three selected SARIMA models cut th
 #### States vs Counties
 
 #### Future Steps
--Implement algorithmic hyperparameter tuning for the Prophet models. 
--Add Fourier terms of time series as exogenous regressor to the ARIMA model.
--For a specific county, input the periods of time where the counties have anomalies in data reporting as exogenous regressors. 
+-Implement algorithmic hyperparameter tuning for the Prophet models.  
+-Add Fourier terms of time series as exogenous regressor to the ARIMA model.  
+-For a specific county, input the periods of time where the counties have anomalies in data reporting as exogenous regressors.   
 ### Neural Network
 
 
