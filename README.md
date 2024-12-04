@@ -117,7 +117,7 @@ That being said, the best performing model at the state level was SARIMA. This m
 
 #### County-Size vs NMSE:
 Here we plot the normalized mean squared error against the size of the dataset (logarithmic scale).  
-![]() <img src="images/modelcomparison.png" width=95%>  
+![]() <img src="images/datasize_nmse.png" width=95%>  
 The forecasting models we implemented provided an actionable advantage over the baseline models starting at a dataset size of around 200,000 calls. By actionable advantage, we mean a MAE improvement of >10. 10 is a typical call volume for a single ambulance in a single 12 hour shift. 
 
 #### Future TODO's
